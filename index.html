@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b23e0e833a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="registration-form">
+        <h1>Registration Form</h1>
+        <div class="box">
+            <form action="#" onsubmit="return validateForm()">
+
+                <div class="inputbox">
+                    <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]+" title="Only letters and numbers are allowed">
+                    <span>User Name</span>
+                </div>
+                <div class="inputbox">
+                    <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email address">
+                    <span>Email</span>
+                </div>
+                <div class="inputbox">
+                    <input type="password" id="pwd" name="pwd" required pattern=".{6,}" title="Password must be at least 6 characters long">
+                    <span>Password</span>
+                </div>
+     
+                <div class="button">
+                    <input type="submit" value="Register">
+                    <input type="reset" value="Reset">
+                </div>
+                <div id="validation-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function validateForm() {
+            var emailField = document.getElementById("email");
+            var passwordField = document.getElementById("pwd");
+            var validationMessage = document.getElementById("validation-message");
+
+            if (passwordField.value.length < 6) {
+                validationMessage.innerHTML = "Password must be at least 6 characters long.";
+                return false;
+            } else if (!emailField.checkValidity()) {
+                validationMessage.innerHTML = "Enter a valid email address.";
+                return false;
+            } else {
+                validationMessage.innerHTML = "";
+                return true;
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>
